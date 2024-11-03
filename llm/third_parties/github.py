@@ -6,7 +6,7 @@ from dotenv import load_dotenv
 
 load_dotenv()
 
-github_api = os.getenv("GITHUB_API")
+github_api = "Bearer " + os.getenv("GITHUB_API")
 
 class GithubAPI:
 
@@ -14,7 +14,7 @@ class GithubAPI:
         self.user: str = user
         self.headers: dict = {
             "Accept": "application/vnd.github+json",
-            "Authorization": f"Bearer {github_api}",
+            "Authorization": github_api,
             "X-GitHub-Api-Version": "2022-11-28"
         }
 
