@@ -1,0 +1,4 @@
+.venv/
+.jupyter_venv/
+.env
+*.ipynb
