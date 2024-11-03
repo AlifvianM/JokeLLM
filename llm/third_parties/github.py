@@ -6,13 +6,15 @@ from dotenv import load_dotenv
 
 load_dotenv()
 
+github_api = os.getenv("GITHUB_API")
+
 class GithubAPI:
 
     def __init__(self, user) -> None:
         self.user: str = user
         self.headers: dict = {
             "Accept": "application/vnd.github+json",
-            "Authorization": "Bearer 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",
+            "Authorization": f"Bearer {github_api}",
             "X-GitHub-Api-Version": "2022-11-28"
         }
 
@@ -36,12 +38,3 @@ class GithubAPI:
         url = f"https://api.github.com/users/{self.user}/repos"
         req = requests.get(url=url, headers=self.headers)
         return req
-    
-    
-
-
-if __name__ == '__main__':
-    user = "AlifvianM"
-    req_us = GithubAPI(user=user).get_user()
-    time.sleep(3)
-    print(req_us)
